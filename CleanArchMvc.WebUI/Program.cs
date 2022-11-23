@@ -1,7 +1,11 @@
 using CleanArchMvc.Infra.Ioc;
-using Microsoft.Extensions.Configuration;
 
-var builder = WebApplication.CreateBuilder(args);
+var webApplicationOptions = new WebApplicationOptions
+{
+    ContentRootPath = AppContext.BaseDirectory,
+    Args = args,
+};    
+var builder = WebApplication.CreateBuilder(webApplicationOptions);
 
 
 // Add services to the container.
@@ -27,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Products}/{action=Index}/{id?}");
 
 app.Run();
