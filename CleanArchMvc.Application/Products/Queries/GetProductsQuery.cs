@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CleanArqMvc.Domain.Entities;
+using MediatR;
 
 namespace CleanArchMvc.Application.Products.Queries
 {
-    internal class GetProductsQuery
+    public class GetProductsQuery : IRequest<IEnumerable<Product>>
     {
+
     }
 }

@@ -4,6 +4,7 @@ using CleanArchMvc.Application.Services;
 using CleanArqMvc.Domain.Interfaces;
 using CleanArqMvc.Infra.Data;
 using CleanArqMvc.Infra.Data.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,10 @@ namespace CleanArchMvc.Infra.Ioc
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+            var myhandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
+            services.AddMediatR(myhandlers);
+
 
             return services;
         }
